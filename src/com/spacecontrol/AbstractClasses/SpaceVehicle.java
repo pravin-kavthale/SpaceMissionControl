@@ -1,5 +1,8 @@
-package AbstractClasses;
+package com.spacecontrol.AbstractClasses;
 
-public class SpaceVehicle {
-
+public abstract class SpaceVehicle {
+	protected int vehicleId;
+	protected String name;
+	
+	public abstract void performanceLunchCheck();
 }
