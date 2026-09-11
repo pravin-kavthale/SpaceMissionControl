@@ -1,5 +1,13 @@
 package com.spacecontrol.enums;
 
-public class MissionStatus {
-    
+public enum MissionStatus {
+    PLANNED,
+    SCHEDULED,
+    PREPARING,
+    READY,
+    LAUNCHED,
+    IN_PROGRESS,
+    COMPLETED,
+    ABORTED
+
 }
