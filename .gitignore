@@ -32,3 +32,9 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+.classpath
+.project
+.settings/
+bin/
+*.class
