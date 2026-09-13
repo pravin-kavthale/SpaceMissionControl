@@ -1,6 +1,5 @@
 package com.spacecontrol.model;
 import java.util.ArrayList;
-import com.spacecontrol.model.Astronaut;
 import com.spacecontrol.enums.*;
 
 public class Mission {
@@ -88,7 +87,6 @@ public class Mission {
 				+ ", missionType=" + missionType + ", priority=" + priority + ", status=" + status + ", duration="
 				+ duration + ", crew=" + crew + ", spacecraft=" + spacecraft + "]";
 	}
-	
 	
 	
 }

@@ -2,7 +2,7 @@ package com.spacecontrol.model;
 
 import com.spacecontrol.enums.AstronautRank;
 
-public class Astronaut {
+public class Astronaut implements Comparable<Astronaut>{
 
     private int astronautId;
     private String name;
@@ -39,8 +39,8 @@ public class Astronaut {
         this.name = name;
     }
 
-    public void setRank(AstronautRank rank) {
-        this.rank = rank;
+    public void setRank(String rank) {
+        this.rank = AstronautRank.valueOf(rank);
     }
 
     public void setSpecialization(String specialization) {
@@ -55,12 +55,11 @@ public class Astronaut {
         this.available = available;
     }
 
-    public Astronaut(int astronautId, String name, AstronautRank rank, String specialization, int experience,
-            boolean available) {
+    public Astronaut(int astronautId, String name, String rank, String specialization, int experience, boolean available) {
         this.astronautId = astronautId;
         this.name = name;
-        this.rank = rank;
-        Specialization = specialization;
+        this.rank = AstronautRank.valueOf(rank);
+        this.Specialization = specialization;
         this.experience = experience;
         this.available = available;
     }
@@ -70,5 +69,20 @@ public class Astronaut {
         return "Astronaut [astronautId=" + astronautId + ", name=" + name + ", rank=" + rank + ", Specialization="
                 + Specialization + ", experience=" + experience + ", available=" + available + "]";
     }
+
+	@Override
+	public int compareTo(Astronaut o) {
+		// TODO Auto-generated method stub
+		if (this.getAstronautId() > o.getAstronautId())
+		{
+			return 1;
+		}
+		else if(this.getAstronautId() > o.getAstronautId()){
+			return -1;
+		}
+		else {
+			return 0;
+		}
+	}
 
 }
