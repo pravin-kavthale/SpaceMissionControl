@@ -40,7 +40,11 @@ public class Astronaut implements Comparable<Astronaut>{
     }
 
     public void setRank(String rank) {
-        this.rank = AstronautRank.valueOf(rank);
+        try {
+            this.rank = AstronautRank.valueOf(rank.toUpperCase());
+        } catch (NullPointerException | IllegalArgumentException e) {
+            throw new IllegalArgumentException("Invalid astronaut rank: " + rank, e);
+        }
     }
 
     public void setSpecialization(String specialization) {
@@ -58,7 +62,11 @@ public class Astronaut implements Comparable<Astronaut>{
     public Astronaut(int astronautId, String name, String rank, String specialization, int experience, boolean available) {
         this.astronautId = astronautId;
         this.name = name;
-        this.rank = AstronautRank.valueOf(rank);
+        try {
+            this.rank = AstronautRank.valueOf(rank.toUpperCase());
+        } catch (NullPointerException | IllegalArgumentException e) {
+            throw new IllegalArgumentException("Invalid astronaut rank: " + rank, e);
+        }
         this.Specialization = specialization;
         this.experience = experience;
         this.available = available;
@@ -72,17 +80,10 @@ public class Astronaut implements Comparable<Astronaut>{
 
 	@Override
 	public int compareTo(Astronaut o) {
-		// TODO Auto-generated method stub
-		if (this.getAstronautId() > o.getAstronautId())
-		{
-			return 1;
-		}
-		else if(this.getAstronautId() > o.getAstronautId()){
-			return -1;
-		}
-		else {
-			return 0;
-		}
+        if (o == null) {
+            throw new NullPointerException("Astronaut to compare cannot be null");
+        }
+        return Integer.compare(this.astronautId, o.astronautId);
 	}
 
 }
