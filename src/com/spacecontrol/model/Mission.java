@@ -1,5 +1,6 @@
 package com.spacecontrol.model;
-import java.util.ArrayList;
+import java.util.HashSet;
+
 import com.spacecontrol.enums.*;
 
 public class Mission {
@@ -12,7 +13,7 @@ public class Mission {
 	private MissionStatus status;
 	private int duration;
 
-	private ArrayList<Astronaut> crew;
+	private HashSet<Astronaut> crew;
 	private Spacecraft spacecraft;
 	
 	
@@ -31,20 +32,20 @@ public class Mission {
 	public MissionType getMissionType() {
 		return missionType;
 	}
-	public void setMissionType(MissionType missionType) {
-		this.missionType = missionType;
+	public void setMissionType(String missionType) {
+		this.missionType = MissionType.valueOf(missionType.toUpperCase());
 	}
 	public MissionPriority getPriority() {
 		return priority;
 	}
-	public void setPriority(MissionPriority priority) {
-		this.priority = priority;
+	public void setPriority(String priority) {
+		this.priority = MissionPriority.valueOf(priority.toUpperCase());
 	}
 	public MissionStatus getStatus() {
 		return status;
 	}
-	public void setStatus(MissionStatus status) {
-		this.status = status;
+	public void setStatus(String status) {
+		this.status = MissionStatus.valueOf(status.toUpperCase());
 	}
 	public int getDuration() {
 		return duration;
@@ -52,11 +53,11 @@ public class Mission {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-	public ArrayList<Astronaut> getCrew() {
+	public HashSet<Astronaut> getCrew() {
 		return crew;
 	}
-	public void setCrew(ArrayList<Astronaut> crew) {
-		this.crew = crew;
+	public void addCrewMember(Astronaut crewMember) {
+		this.crew.add(crewMember);
 	}
 	public Spacecraft getSpacecraft() {
 		return spacecraft;
@@ -67,16 +68,15 @@ public class Mission {
 	public int getMissionId() {
 		return missionId;
 	}
-	public Mission(int missionId, String missionName, String destination, MissionType missionType,
-			MissionPriority priority, MissionStatus status, int duration, ArrayList<Astronaut> crew,
+	public Mission(int missionId, String missionName, String destination, String missionType,
+			String priority, String status, int duration, HashSet<Astronaut> crew,
 			Spacecraft spacecraft) {
 		super();
 		this.missionId = missionId;
 		this.missionName = missionName;
 		this.destination = destination;
-		this.missionType = missionType;
-		this.priority = priority;
-		this.status = status;
+		this.missionType = MissionType.valueOf(missionType.toUpperCase());
+		this.priority = MissionPriority.valueOf(priority.toUpperCase());
 		this.duration = duration;
 		this.crew = crew;
 		this.spacecraft = spacecraft;
